@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto3trimestre.Cine">
+   <bottom>
+      <AnchorPane prefHeight="65.0" prefWidth="646.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="292.0" layoutY="20.0" mnemonicParsing="false" text="Comprar" />
+            <Label fx:id="IDComprados" layoutX="422.0" layoutY="24.0" prefHeight="18.0" prefWidth="153.0" />
+            <Button fx:id="Volver" layoutX="539.0" layoutY="20.0" mnemonicParsing="false" onAction="#cambiarEscena" text="Volver" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="462.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane hgap="10.0" layoutX="20.0" layoutY="14.0" prefHeight="357.0" prefWidth="606.0" vgap="10.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="32.00000610351563" minHeight="10.0" prefHeight="28.00000610351563" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="32.79999389648438" minHeight="10.0" prefHeight="32.79999389648438" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="A13" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A2" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A3" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A4" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A6" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A12" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A10" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A15" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A7" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A20" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A19" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A16" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A24" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A23" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A14" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A9" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A5" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A8" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A30" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A25" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A26" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A22" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A21" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A18" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A17" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A29" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A1" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A34" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A32" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A33" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A31" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A27" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A28" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A36" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="A35" mnemonicParsing="false" prefHeight="60.0" prefWidth="134.0" style="-fx-background-color: transparent;" GridPane.rowIndex="8">
+                     <graphic>
+                        <ImageView fitHeight="69.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/BUTACAN.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
