@@ -94,19 +94,27 @@ public class cartelera {
 
                     btnAñadir.setOnAction(e -> {
                         try {
-                            Parent root = FXMLLoader.load(getClass().getResource("Cine.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Cine.fxml"));
+                            Parent root = loader.load();
+
+                            Cine controlador = loader.getController(); // usa Cine, no CineController
+                            controlador.cargartitulo(nombre); // pasa el nombre que quieras
+                            controlador.cargafecha(new SimpleDateFormat("yyyy-MM-dd").format(fechaEspectaculo));
+
                             Stage stage = (Stage) ((Button) e.getSource()).getScene().getWindow();
                             stage.setScene(new Scene(root));
                             stage.show();
                         } catch (Exception ex) {
                             ex.printStackTrace();
-                            Alert alert = new Alert(AlertType.ERROR);
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Error al cambiar de escena");
                             alert.setHeaderText(null);
                             alert.setContentText("No se pudo cargar la pantalla de Cine.");
                             alert.showAndWait();
                         }
                     });
+
+
 
 
                     //
