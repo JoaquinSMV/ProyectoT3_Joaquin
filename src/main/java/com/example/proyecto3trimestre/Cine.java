@@ -30,7 +30,17 @@ public class Cine implements Initializable {
     private Button Volver;
 
     @FXML
+    private Button Comprar;
+
+    @FXML
     private GridPane gridButacas;
+
+    @FXML
+    private int idUsuario;
+    @FXML
+    private int idEspectaculo;
+
+    private ArrayList<Integer> butacasSeleccionadas = new ArrayList<>();
 
     private ArrayList<Button> listaButacas = new ArrayList<>();
 
@@ -38,6 +48,11 @@ public class Cine implements Initializable {
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static final String DB_USER = "info";
     private static final String DB_PASS = "info";
+
+    public void setUsuarioYEspectaculo(int idUsuario, int idEspectaculo) {
+        this.idUsuario = idUsuario;
+        this.idEspectaculo = idEspectaculo;
+    }
 
     public void cargartitulo(String nombre) {
         Titulo.setText(nombre);
@@ -86,9 +101,19 @@ public class Cine implements Initializable {
                 butaca.setGraphic(imageView);
 
                 // Acción al hacer clic
+               int finalIdBD = idBD; // Necesario para usarlo en la lambda
                 butaca.setOnAction(e -> {
-                    System.out.println("Has pulsado la butaca " + idFXML + " (ID BD: " + idBD + ")");
+                    if (butacasSeleccionadas.contains(finalIdBD)) {
+                        butacasSeleccionadas.remove((Integer) finalIdBD); // Si ya está, se desmarca
+                        butaca.setStyle("-fx-background-color: transparent;");
+                    } else {
+                        butacasSeleccionadas.add(finalIdBD); // Se selecciona
+                        butaca.setStyle("-fx-background-color: yellow;"); // Color para indicar selección
+                    }
+
+                    System.out.println("Butacas seleccionadas: " + butacasSeleccionadas);
                 });
+
 
                 listaButacas.add(butaca);
                 gridButacas.add(butaca, columna, fila);
@@ -104,6 +129,38 @@ public class Cine implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
+    public void Comprar (ActionEvent event) {
+        if (butacasSeleccionadas.isEmpty()) {
+            System.out.println("No has seleccionado ninguna butaca.");
+            return;
+        }
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USER, DB_PASS)) {
+            String insertSQL = "INSERT INTO reservas (id_reserva, id_espectaculo, id_butaca, estado, id_usuario) " +
+                    "VALUES (reservas_seq.NEXTVAL, ?, ?, 'reservada', ?)";
+
+            PreparedStatement ps = conn.prepareStatement(insertSQL);
+
+            for (int idButaca : butacasSeleccionadas) {
+                ps.setInt(1, idEspectaculo);
+                ps.setInt(2, idButaca);
+                ps.setInt(3, idUsuario);
+                ps.addBatch();
+            }
+
+            ps.executeBatch();
+
+            System.out.println("Reserva completada con éxito.");
+            butacasSeleccionadas.clear();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void cambiarEscena(ActionEvent event) {
         try {
