@@ -20,6 +20,11 @@
                   <Font name="Berlin Sans FB Demi Bold" size="27.0" />
                </font>
             </Text>
+            <Button fx:id="Volver" layoutX="524.0" layoutY="13.0" mnemonicParsing="false" onAction="#cambiarEscena" prefHeight="16.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="🔙" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </top>
@@ -46,7 +51,7 @@
                      <Text fx:id="money" layoutX="104.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" />
                      <Text fx:id="fecha" layoutX="102.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha estreno" wrappingWidth="174.93670654296875" />
                      <Text fx:id="moneyVip" layoutX="190.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" />
-                     <Button fx:id="butaca" layoutX="282.0" layoutY="250.0" mnemonicParsing="false"  text="Butacas" />
+                     <Button fx:id="butaca" layoutX="282.0" layoutY="250.0" mnemonicParsing="false" text="Butacas" />
                   </children>
                </AnchorPane>
             </children></HBox>

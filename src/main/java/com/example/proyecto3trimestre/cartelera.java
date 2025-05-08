@@ -1,13 +1,11 @@
 package com.example.proyecto3trimestre;
 
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -17,152 +15,150 @@ import javafx.stage.Stage;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class cartelera {
 
     @FXML
-    private ImageView IMGP; // Imagen de la película
+    private TextField busca;
 
     @FXML
-    private Text Titulo; // Título de la película
-
-    @FXML
-    private Text money; // Precio de la película
-
-    @FXML
-    private Text moneyVip; // Precio vip
-
-    @FXML
-    private Text fecha; // Fecha de estreno
-
-    @FXML
-    private TextField busca; // Campo para buscar películas
-
-    @FXML
-    private Button butacas; // Botón de cambio escenario
-
-    @FXML
-    private Label avisos; // Etiqueta para avisos o mensajes
+    private Button Volver;
 
     @FXML
     private HBox contenedorPeliculas;
-
-    //Para estar conectados a la base de datos...
 
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static final String DB_USER = "info";
     private static final String DB_PASS = "info";
 
+    // Se asigna desde la escena anterior (login, por ejemplo)
+    private int idUsuario;
 
+    /** Llamar desde el controlador anterior: controller.setIdUsuario(idDelUsuarioLogueado); */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-    private void cargarcartelera () {
+    @FXML
+    public void initialize() {
+        cargarcartelera();
+    }
 
-            contenedorPeliculas.getChildren().clear(); // Limpiar las pelis anteriores
-
-            String sql = "SELECT * FROM ESPECTACULOS";
-
-            try (Connection conn = DriverManager.getConnection(URL, DB_USER, DB_PASS);
-                 Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery(sql)) {
-
-                while (rs.next()) {
-                    String nombre = rs.getString("NOMBRE");
-                    Date fechaEspectaculo = rs.getDate("FECHA");
-                    double precioBase = rs.getDouble("PRECIO_BASE");
-                    double moneyVip = rs.getDouble("PRECIO_VIP");
-
-                    // Crear los nodos nuevos
-                    ImageView img = new ImageView();
-                    try {
-                        Image image = new Image(getClass().getResourceAsStream("/Images/" + nombre.toUpperCase() + ".jpg"));
-                        img.setImage(image);
-                        img.setFitHeight(192);
-                        img.setFitWidth(181);
-                        img.setPreserveRatio(true);
-                    } catch (Exception ex) {
-                        System.out.println("Imagen no encontrada para: " + nombre);
-                    }
-
-                    Text titulo = new Text(nombre);
-                    Text precio = new Text("Base: " + precioBase + " €");
-                    Text precioV = new Text("Vip: " + moneyVip + " €");
-                    Text fecha = new Text(new SimpleDateFormat("yyyy-MM-dd").format(fechaEspectaculo));
-                   //
-                    Button btnAñadir = new Button("Añadir");
-
-                    btnAñadir.setOnAction(e -> {
-                        try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Cine.fxml"));
-                            Parent root = loader.load();
-
-                            Cine controlador = loader.getController(); // usa Cine, no CineController
-                            controlador.cargartitulo(nombre); // pasa el nombre que quieras
-                            controlador.cargafecha(new SimpleDateFormat("yyyy-MM-dd").format(fechaEspectaculo));
-
-                            Stage stage = (Stage) ((Button) e.getSource()).getScene().getWindow();
-                            stage.setScene(new Scene(root));
-                            stage.show();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("Error al cambiar de escena");
-                            alert.setHeaderText(null);
-                            alert.setContentText("No se pudo cargar la pantalla de Cine.");
-                            alert.showAndWait();
-                        }
-                    });
-
-
-
-
-                    //
-                    // Estilos y posiciones si hace falta (o usa VBox para ordenarlos verticalmente)
-                    VBox card = new VBox(10, img, titulo, precio, precioV, fecha, btnAñadir);
-                    card.setStyle("-fx-background-color: #eeeeee; -fx-padding: 10; -fx-border-color: black;");
-                    card.setPrefWidth(200);
-
-                    contenedorPeliculas.getChildren().add(card);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
-
-
-    public void buscar(ActionEvent event) throws SQLException {
-        // Limpiar la cartelera antes de cargar los resultados de la búsqueda
+    private void cargarcartelera() {
         contenedorPeliculas.getChildren().clear();
-
-        String titulo = busca.getText().trim(); // Obtener el texto de búsqueda
-
-        String sql = "SELECT * FROM ESPECTACULOS WHERE NOMBRE LIKE ?"; // Utilizamos LIKE para que busque coincidencias parciales
+        String sql = "SELECT * FROM ESPECTACULOS";
 
         try (Connection conn = DriverManager.getConnection(URL, DB_USER, DB_PASS);
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-
-            pst.setString(1, "%" + titulo + "%"); // Usamos LIKE para que busque coincidencias parciales
-            ResultSet rs = pst.executeQuery();
-
-            boolean found = false; // Para verificar si encontramos alguna película
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                found = true;
-
+                // Leer correctamente el ID del espectáculo
+                int idEspectaculo = rs.getInt("ID_ESPECTACULO");
                 String nombre = rs.getString("NOMBRE");
                 Date fechaEspectaculo = rs.getDate("FECHA");
                 double precioBase = rs.getDouble("PRECIO_BASE");
                 double precioVip = rs.getDouble("PRECIO_VIP");
 
-                // Crear los nodos para mostrar la película
                 ImageView img = new ImageView();
                 try {
-                    Image image = new Image(getClass().getResourceAsStream("/Images/" + nombre.toUpperCase() + ".jpg"));
+                    Image image = new Image(
+                            getClass().getResourceAsStream("/Images/" + nombre.toUpperCase() + ".jpg")
+                    );
+                    img.setImage(image);
+                    img.setFitHeight(192);
+                    img.setFitWidth(181);
+                    img.setPreserveRatio(true);
+                } catch (Exception ex) {
+                    System.out.println("Imagen no encontrada para: " + nombre);
+                }
+
+                Text titulo = new Text(nombre);
+                Text precio = new Text("Base: " + precioBase + " €");
+                Text precioV = new Text("Vip: "   + precioVip  + " €");
+                Text fecha = new Text(new SimpleDateFormat("yyyy-MM-dd")
+                        .format(fechaEspectaculo));
+
+                Button btnAñadir = new Button("Añadir");
+                btnAñadir.setOnAction(e -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(
+                                getClass().getResource("Cine.fxml")
+                        );
+                        Parent root = loader.load();
+
+                        Cine controlador = loader.getController();
+                        controlador.cargartitulo(nombre);
+                        controlador.cargafecha(
+                                new SimpleDateFormat("yyyy-MM-dd")
+                                        .format(fechaEspectaculo)
+                        );
+                        // Pasamos el usuario y el espectáculo
+                        controlador.setUsuarioYEspectaculo(idUsuario, idEspectaculo);
+                        controlador.crearButacasDesdeBD();
+
+
+                        Stage stage = (Stage)((Button)e.getSource())
+                                .getScene().getWindow();
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error al cambiar de escena");
+                        alert.setHeaderText(null);
+                        alert.setContentText(
+                                "No se pudo cargar la pantalla de Cine."
+                        );
+                        alert.showAndWait();
+                    }
+                });
+
+                VBox card = new VBox(10, img, titulo, precio, precioV, fecha, btnAñadir);
+                card.setStyle(
+                        "-fx-background-color: #eeeeee; " +
+                                "-fx-padding: 10; " +
+                                "-fx-border-color: black;"
+                );
+                card.setPrefWidth(200);
+
+                contenedorPeliculas.getChildren().add(card);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,
+                    "Error al cargar cartelera:\n" + e.getMessage()
+            ).showAndWait();
+        }
+    }
+
+    @FXML
+    public void buscar(ActionEvent event) {
+        contenedorPeliculas.getChildren().clear();
+        String tituloBusqueda = busca.getText().trim();
+        String sql = "SELECT * FROM ESPECTACULOS WHERE NOMBRE LIKE ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, DB_USER, DB_PASS);
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setString(1, "%" + tituloBusqueda + "%");
+            ResultSet rs = pst.executeQuery();
+
+            boolean encontrado = false;
+            while (rs.next()) {
+                encontrado = true;
+                int idEspectaculo = rs.getInt("ID_ESPECTACULO");
+                String nombre = rs.getString("NOMBRE");
+                Date fechaEspectaculo = rs.getDate("FECHA");
+                double precioBase = rs.getDouble("PRECIO_BASE");
+                double precioVip = rs.getDouble("PRECIO_VIP");
+
+                ImageView img = new ImageView();
+                try {
+                    Image image = new Image(
+                            getClass().getResourceAsStream("/Images/" + nombre.toUpperCase() + ".jpg")
+                    );
                     img.setImage(image);
                     img.setFitHeight(192);
                     img.setFitWidth(181);
@@ -172,42 +168,71 @@ public class cartelera {
                 }
 
                 Text tituloText = new Text(nombre);
-                Text precio = new Text("Precio normal: " + precioBase + " €");
-                Text vip = new Text("Precio VIP: " + precioVip + " €");
-                Text fechaText = new Text(new SimpleDateFormat("yyyy-MM-dd").format(fechaEspectaculo));
+                Text precio = new Text("Base: " + precioBase + " €");
+                Text vip = new Text("Vip: " + precioVip + " €");
+                Text fechaText = new Text(new SimpleDateFormat("yyyy-MM-dd")
+                        .format(fechaEspectaculo));
 
-                // Crear el card de la película
-                VBox card = new VBox(10, img, tituloText, precio, vip, fechaText);
-                card.setStyle("-fx-background-color: #eeeeee; -fx-padding: 10; -fx-border-color: black;");
+                Button btnAñadir = new Button("Añadir");
+                btnAñadir.setOnAction(e -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(
+                                getClass().getResource("Cine.fxml")
+                        );
+                        Parent root = loader.load();
+
+                        Cine controlador = loader.getController();
+                        controlador.cargartitulo(nombre);
+                        controlador.cargafecha(
+                                new SimpleDateFormat("yyyy-MM-dd")
+                                        .format(fechaEspectaculo)
+                        );
+                        controlador.setUsuarioYEspectaculo(idUsuario, idEspectaculo);
+
+                        Stage stage = (Stage)((Button)e.getSource())
+                                .getScene().getWindow();
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        new Alert(Alert.AlertType.ERROR,
+                                "No se pudo cargar la pantalla de Cine."
+                        ).showAndWait();
+                    }
+                });
+
+                VBox card = new VBox(10, img, tituloText, precio, vip, fechaText, btnAñadir);
+                card.setStyle(
+                        "-fx-background-color: #eeeeee; " +
+                                "-fx-padding: 10; " +
+                                "-fx-border-color: black;"
+                );
                 card.setPrefWidth(200);
 
                 contenedorPeliculas.getChildren().add(card);
             }
 
-            // Si no encontramos ninguna película con ese nombre, mostrar un mensaje
-            if (!found) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sin resultados");
-                alert.setHeaderText(null);
-                alert.setContentText("No se encontró ningún espectáculo con ese título.");
-                alert.showAndWait();
+            if (!encontrado) {
+                new Alert(Alert.AlertType.INFORMATION,
+                        "No se encontró ningún espectáculo con ese título."
+                ).showAndWait();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No se pudo conectar a la base de datos");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            new Alert(Alert.AlertType.ERROR,
+                    "Error en la búsqueda:\n" + e.getMessage()
+            ).showAndWait();
         }
     }
-
-    @FXML
-    public void initialize() {
-       cargarcartelera();
+    public void cambiarEscena(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage stage = (Stage) Volver.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
-
-
 }
-
