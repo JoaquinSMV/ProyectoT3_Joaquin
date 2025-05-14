@@ -16,9 +16,9 @@
    <left>
       <AnchorPane prefHeight="500.0" prefWidth="346.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="500.0" fitWidth="330.0" layoutX="25.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="500.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Images/8c90afc3-10c0-4c2d-b327-d020d416070b.jpg" />
+                  <Image url="@../../../Images/DUNE.jpg" />
                </image>
             </ImageView>
          </children>
