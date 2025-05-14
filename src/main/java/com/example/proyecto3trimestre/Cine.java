@@ -48,8 +48,10 @@ public class Cine  {
     private static final String DB_USER = "info";
     private static final String DB_PASS = "info";
 
+
+
     public void setUsuarioYEspectaculo(int idUsuario, int idEspectaculo) {
-        this.idUsuario = idUsuario;
+        this.idUsuario = SESION.getIdUsuario();
         this.idEspectaculo = idEspectaculo;
     }
 
@@ -62,6 +64,8 @@ public class Cine  {
     public void cargafecha(String fecha) {
         Fecha.setText(fecha);
     }
+
+
 
 
 
@@ -120,12 +124,21 @@ public class Cine  {
                         butacasSeleccionadas.remove((Integer) finalIdBD);
                         butaca.setStyle("-fx-background-color: transparent;");
                     } else {
+                        if (butacasSeleccionadas.size() >= 4) {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Límite alcanzado");
+                            alert.setHeaderText(null);
+                            alert.setContentText("No puedes seleccionar más de 4 butacas.");
+                            alert.showAndWait();
+                            return;
+                        }
                         butacasSeleccionadas.add(finalIdBD);
                         butaca.setStyle("-fx-background-color: yellow;");
                     }
                     System.out.println("Butacas seleccionadas: " + butacasSeleccionadas);
                     calcularPrecioTotal();
                 });
+
 
                 listaButacas.add(butaca);
                 gridButacas.add(butaca, columna, fila);

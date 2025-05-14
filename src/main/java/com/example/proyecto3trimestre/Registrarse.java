@@ -90,7 +90,7 @@ public class Registrarse {
         }
     }
 
-    // Método auxiliar para mostrar alertas (típico en JavaFX para manejo de errores o confirmaciones)
+    // Método para mostrar alertas
     private void mostrarAlerta(AlertType tipo, String titulo, String mensaje) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);

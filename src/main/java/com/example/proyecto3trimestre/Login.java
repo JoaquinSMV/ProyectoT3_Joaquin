@@ -52,6 +52,7 @@ public class Login {
         String url = "jdbc:oracle:thin:@localhost:1521:XE";
         String dbuser = "info";
         String dbpass = "info";
+        boolean isAuthenticated = false;
 
         try {
             Connection conn = DriverManager.getConnection(url, dbuser, dbpass);
@@ -60,13 +61,22 @@ public class Login {
             ps.setString(1, user);
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
-            return rs.next();
+
+            // Verificar si existe el usuario
+            if (rs.next()) {
+                isAuthenticated = true;
+                // Obtener el idUsuario
+                int idUsuario = rs.getInt("ID_USUARIO");
+                // Guardar el idUsuario en la clase Sesion
+                SESION.setIdUsuario(idUsuario);  // Aquí se guarda el ID_USUARIO
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
 
+        return isAuthenticated;
     }
+
 
 
 

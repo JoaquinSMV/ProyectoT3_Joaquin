@@ -19,6 +19,9 @@ import java.text.SimpleDateFormat;
 public class cartelera {
 
     @FXML
+    private Label D_Label;
+
+    @FXML
     private TextField busca;
 
     @FXML
@@ -30,6 +33,8 @@ public class cartelera {
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static final String DB_USER = "info";
     private static final String DB_PASS = "info";
+
+    int idaUsuario = SESION.getIdUsuario();
 
     // Se asigna desde la escena anterior (login, por ejemplo)
     private int idUsuario;
@@ -133,6 +138,7 @@ public class cartelera {
         }
     }
 
+
     @FXML
     public void buscar(ActionEvent event) {
         contenedorPeliculas.getChildren().clear();
@@ -188,6 +194,8 @@ public class cartelera {
                                         .format(fechaEspectaculo)
                         );
                         controlador.setUsuarioYEspectaculo(idUsuario, idEspectaculo);
+                        controlador.crearButacasDesdeBD();
+                        System.out.println("ID USUARIO asignado: " + idUsuario);
 
                         Stage stage = (Stage)((Button)e.getSource())
                                 .getScene().getWindow();
@@ -225,6 +233,7 @@ public class cartelera {
             ).showAndWait();
         }
     }
+
     public void cambiarEscena(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
@@ -233,6 +242,22 @@ public class cartelera {
             stage.show();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void devolver(ActionEvent event) {
+
+        String sql = "DELETE FROM RESERVAS WHERE ID_USUARIO = ?";
+        try (Connection conn = DriverManager.getConnection(URL, DB_USER, DB_PASS);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, SESION.getIdUsuario());
+            int filasBorradas = stmt.executeUpdate();
+            D_Label.setText("Reservas eliminadas: " + filasBorradas);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
