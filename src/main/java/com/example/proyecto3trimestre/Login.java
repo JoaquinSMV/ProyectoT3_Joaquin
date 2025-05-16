@@ -87,7 +87,7 @@ public class Login {
             // Cargar el archivo FXML de registro
             Parent root = FXMLLoader.load(getClass().getResource("registro.fxml"));
             Stage stage = (Stage) Conectarse.getScene().getWindow();  // Obtener la ventana actual
-            stage.setScene(new Scene(root, 600, 400));  // Cambiar la escena
+            stage.setScene(new Scene(root, 700, 500));  // Cambiar la escena
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto3trimestre.Registrarse">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto3trimestre.Registrarse">
    <top>
-      <AnchorPane prefHeight="146.0" prefWidth="600.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="162.0" prefWidth="700.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#0598ff" layoutX="212.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRATE">
+            <Text fill="#0598ff" layoutX="262.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRATE">
                <font>
                   <Font name="Berlin Sans FB" size="33.0" />
                </font>
@@ -21,20 +21,20 @@
          </children>
       </AnchorPane>
    </top>
-   <bottom>
-      <AnchorPane prefHeight="291.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="338.0" prefWidth="700.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="usuario" alignment="CENTER" layoutX="225.0" layoutY="14.0" promptText="USUARIO" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="registrarUsuario" layoutX="256.0" layoutY="177.0" mnemonicParsing="false" onAction="#registrarUsuario" style="-fx-background-color: #0598ff;" text="REGISTRARSE" textFill="WHITE" />
-            <Button fx:id="volver" layoutX="526.0" layoutY="215.0" mnemonicParsing="false" onAction="#paAtras" style="-fx-background-color: #0598ff;" text="VOLVER" textFill="WHITE">
+            <TextField fx:id="usuario" alignment="CENTER" layoutX="275.0" layoutY="10.0" promptText="USUARIO" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="registrarUsuario" layoutX="292.0" layoutY="200.0" mnemonicParsing="false" onAction="#registrarUsuario" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #0598ff;" text="REGISTRARSE" textFill="WHITE" />
+            <Button fx:id="volver" layoutX="571.0" layoutY="259.0" mnemonicParsing="false" onAction="#paAtras" prefHeight="34.0" prefWidth="78.0" style="-fx-background-color: #0598ff;" text="VOLVER" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <PasswordField fx:id="contraseña" alignment="CENTER" layoutX="225.0" layoutY="113.0" promptText="CONTRASEÑA" style="-fx-background-color: transparent4; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="gmail" alignment="CENTER" layoutX="225.0" layoutY="63.0" promptText="CORREO" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label fx:id="texto" layoutX="39.0" layoutY="217.0" prefHeight="18.0" prefWidth="322.0" textFill="WHITE" />
+            <PasswordField fx:id="contraseña" alignment="CENTER" layoutX="275.0" layoutY="118.0" promptText="CONTRASEÑA" style="-fx-background-color: transparent4; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="gmail" alignment="CENTER" layoutX="275.0" layoutY="65.0" promptText="CORREO" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Label fx:id="texto" layoutX="27.0" layoutY="267.0" prefHeight="18.0" prefWidth="322.0" textFill="WHITE" />
          </children>
       </AnchorPane>
-   </bottom>
+   </center>
 </BorderPane>

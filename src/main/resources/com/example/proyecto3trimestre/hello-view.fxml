@@ -14,11 +14,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyecto3trimestre.Login">
    <left>
-      <AnchorPane prefHeight="500.0" prefWidth="346.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="346.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="500.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Images/DUNE.jpg" />
+                  <Image url="@../../../Images/CinesJoaco.jpg" />
                </image>
             </ImageView>
          </children>
