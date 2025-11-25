@@ -71,7 +71,7 @@ public class Registrarse {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            texto.setText("Hubo un problema con la base de datos");
+            texto.setText("Usuario ya existente o error en la base de datos.");
         }
     }
 
